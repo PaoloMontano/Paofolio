@@ -1,0 +1,33 @@
+<FILMS>
+  <FEATURE>
+    <TITLE>In Studio with Hera Films</TITLE>
+    <PREVIEW>images/AU_Pre.jpg</PREVIEW>
+    <VIDEO>60622774</VIDEO>
+    <DESC>Coming from various artistic backgrounds, we see beauty in life's everyday moments. We understand that a relationship is more than just your wedding day. Since you've taken your time to develop your devotion to one another, we want to take our time to create a film that truly illustrates you. 
+    </DESC>
+  </FEATURE>
+  <FEATURE>
+    <TITLE>Christine + Sebatian</TITLE>
+    <PREVIEW>images/CS_Pre.jpg</PREVIEW>
+    <VIDEO>51171692</VIDEO>
+    <DESC>With a strong and comfortable understanding of each other, it was only natural to get engaged. Through their appreciation and acceptance of loving each other for who they truly are, Christine and Sebastian plan to continue their growth together towards a marriage in the next coming years.</DESC>
+  </FEATURE>
+  <FEATURE>
+    <TITLE>Emily + Lucas</TITLE>
+    <PREVIEW>images/EL_Pre.jpg</PREVIEW>
+    <VIDEO>45996084</VIDEO>
+    <DESC>Circumstances interrupted Lucas and Emily's dream of a perfect wedding. Their light hearted personalities decided to put on a post-marriage wedding for those nearest and dearest. With a love of nature and simplicity, and a little help from our team; they arranged an intimate gathering.</DESC>
+  </FEATURE>
+  <FEATURE>
+    <TITLE>Victoria + Dennis</TITLE>
+    <PREVIEW>images/VD_Pre.jpg</PREVIEW>
+    <VIDEO>52960417</VIDEO>
+    <DESC>These high school sweethearts have done most of their growing together in their first home away from home. Understanding and appreciating each other's skills and strengths, while still loving and laughing at each other's faults; Victoria and Dennis will continue to share memories they've built in their home.</DESC>
+  </FEATURE> 
+  <FEATURE>
+    <TITLE>Rachelle + Jesse</TITLE>
+    <PREVIEW>images/RJ_Pre.jpg</PREVIEW>
+    <VIDEO>51571541</VIDEO>
+    <DESC>With very busy lives and passionate life goals, Rachelle and Jesse have learned to value their time together. Time in which they spend challenging and bringing out the best in each other. With continual family support, Rachelle and Jesse have made it a priority to include family in their lives.</DESC>
+  </FEATURE>
+</FILMS>
