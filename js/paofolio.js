@@ -1,7 +1,7 @@
 /**
  * Loads images, names, and story needed to represent each Vimeo video.
  * @param  {XML} url [XML file with information for each Video.]
-  */
+ */
 function firstLoad(url) {
   var xmlhttp;
   var txt,x,xx,vim,i,num;
