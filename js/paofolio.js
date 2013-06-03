@@ -1,3 +1,7 @@
+/**
+ * Loads images, names, and story needed to represent each Vimeo video.
+ * @param  {XML} url [XML file with information for each Video.]
+  */
 function firstLoad(url) {
   var xmlhttp;
   var txt,x,xx,vim,i,num;
@@ -47,6 +51,11 @@ function firstLoad(url) {
   xmlhttp.send();
 }
 
+/**
+ * Targets specific spot to replace JPG image with an embedded Vimeo Video.
+ * @param  {int}    Vimeo Vimeo ID
+ * @param  {int}    spot  Unique location for where embedded video is placed.
+ */
 function loadVideo(vimeo, spot) {
   var xmlhttp;
   var txt,x,xx,vim,i;
@@ -71,6 +80,12 @@ function loadVideo(vimeo, spot) {
   xmlhttp.send();
 }
 
+/**
+ * Sets the thumbnail image for the appropriate video.
+ * @param  {XML Document Tag} x Specific Couple
+ * @param  {int}              i Identifier for the specific div tag.
+ * @return {String}             Full HTML markup for thumbnail with hover play button.
+ */
 function getImages(x,i) {
   var txt,xx;
   xx = x.getElementsByTagName('VIDEO');
@@ -92,6 +107,11 @@ function getImages(x,i) {
   return txt;
 }
 
+/**
+ * Creates the photo gallery.
+ * @param  {XML Document} url Document containing information for feature gallery.
+ * @return {String}           HTML markup for gallery.
+ */
 function loadPhotos(url) {
   var xmlhttp;
   var txt,x,xx,i,num;
@@ -115,10 +135,10 @@ function loadPhotos(url) {
         txt += '</div> <!-- photoGallery -->';
         txt += '<div id="photoHolder' + i + '" class="photoHolder">';
         txt += '<div id="photoTitle' + i + '" class="photoTitle">';
-        txt += getNames(x[i]);
+        txt += getStringValues(x[i],'NAME');
         txt += '</div> <!-- photoTitle -->';
         txt += '<div id="photoStory' + i + '" class="photoStory">';
-        txt += getStory(x[i]);
+        txt += getStringValues(x[i],'STORY');
         txt += '</div> <!-- photoStory -->';
         txt += '</div> <!-- photoHolder -->';
         txt += '</div> <!-- photoBox -->';
@@ -132,6 +152,11 @@ function loadPhotos(url) {
   xmlhttp.send();
 }
 
+/**
+ * Creates a gallery for the specific coulpe in feature section.
+ * @param  {XML Document Tag} x Contains multiple tags for pictures.
+ * @return {String}             HTML Markup to create gallery.
+ */
 function getGallery(x) {
   var txt,xx,i;
   txt = '';
@@ -142,24 +167,37 @@ function getGallery(x) {
   return txt;
 }
 
-function getStory(x) {
+/**
+ * Retrieves name or story from XML file.
+ * @param  {XML Document Tag}   x                Specific couple.
+ * @param  {TagName}            tagname          TagName identifier.
+ * @return {String}                              Value of TagName.
+ */
+function getStringValues(x,tagname) {
   var xx,txt;
-  xx = x.getElementsByTagName('STORY');
-  return xx[0].firstChild.nodeValue;
+  xx = x.getElementsByTagName(tagname);
+  try {
+    txt = xx[0].firstChild.nodeValue;
+  } catch (er) {
+    txt = tagname + 'unavailable.';
+  }
+  return txt;
 }
 
-function getNames(x) {
-  var xx,txt;
-  xx = x.getElementsByTagName('NAME');
-  return xx[0].firstChild.nodeValue;
-}
-
+/**
+ * Determines the total number of images in the gallery.
+ * @param  {[type]} x [description]
+ * @return {int}      [Total number of images.]
+ */
 function totalImages(x) {
   var xx;
   xx = x.getElementsByTagName('PICTURE');
   return xx.length;
 }
 
+/**
+ * Clears the container to reset scrollbar position.
+ */
 function clearMedia() {
   document.getElementById('mediaWrapperID').innerHTML='';
 }
