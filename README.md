@@ -8,7 +8,7 @@ Client wanted to display multiple Vimeo videos on their page.
 They chose to embed each video directly on the front page.
 This created long load times and issues when using mobile devices.
 
-Proposed solution: 
+Proposed solution:
 Load JPG thumbnails instead of every embedded Vimeo video.
 
 Method:
