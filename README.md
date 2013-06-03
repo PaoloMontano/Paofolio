@@ -20,3 +20,5 @@ Photo gallery retrieves the names, story, and photos from an XML document.
 Replaces <div> container with an auto-width gallery.
 
 Example: http://chaos.PaoloMontano.ca/paofolio
+
+Video and photos from HERA films (http://herafilms.com).
