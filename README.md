@@ -1,7 +1,13 @@
 Pirouette
 ========
 
-Embedded Vimeo and photo gallery.
+The solution to embedding multiple Vimeo videos to a single page gallery.
+Rather than embedding Vimeo's videos for all your work, the page will represent each video with an image.
+This allows for faster loading on desktops and mobile devices.
+Additionally, Pirouette will only play one video at a time. 
+So if there is a video currently playing while the user clicks on a different thumbnail, Pirouette will
+stop the previous video and replace it with the appropriate image. Therefore solving multiple playback issues.
+
 
 Problem:
 ======
