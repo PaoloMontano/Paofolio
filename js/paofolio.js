@@ -1,7 +1,3 @@
-/**
- * Loads images, names, and story needed to represent each Vimeo video.
- * @param  {XML} url [XML file with information for each Video.]
- */
 function firstLoad(url) {
   var xmlhttp;
   var txt,x,xx,vim,i,num;
@@ -51,11 +47,6 @@ function firstLoad(url) {
   xmlhttp.send();
 }
 
-/**
- * Targets specific spot to replace JPG image with an embedded Vimeo Video.
- * @param  {int}    Vimeo Vimeo ID
- * @param  {int}    spot  Unique location for where embedded video is placed.
- */
 function loadVideo(vimeo, spot) {
   var xmlhttp;
   var txt,x,xx,vim,i;
@@ -80,12 +71,6 @@ function loadVideo(vimeo, spot) {
   xmlhttp.send();
 }
 
-/**
- * Sets the thumbnail image for the appropriate video.
- * @param  {XML Document Tag} x Specific Couple
- * @param  {int}              i Identifier for the specific div tag.
- * @return {String}             Full HTML markup for thumbnail with hover play button.
- */
 function getImages(x,i) {
   var txt,xx;
   xx = x.getElementsByTagName('VIDEO');
@@ -102,16 +87,12 @@ function getImages(x,i) {
     txt += '<img src="images/preview.jpg" />';
   }
   txt += '</a>';
-  txt += '<div class="playArrow"><a href="#" onclick="loadVideo(' + vim + ',' + i + '); return false"><img src="images/Arrow.png" /></a></div><!-- playArrow -->';
-
+  if (!detectmob()) {
+    txt += '<div class="playArrow"><a href="#" onclick="loadVideo(' + vim + ',' + i + '); return false"><img src="images/Arrow.png" /></a></div><!-- playArrow -->';
+  }
   return txt;
 }
 
-/**
- * Creates the photo gallery.
- * @param  {XML Document} url Document containing information for feature gallery.
- * @return {String}           HTML markup for gallery.
- */
 function loadPhotos(url) {
   var xmlhttp;
   var txt,x,xx,i,num;
@@ -135,16 +116,16 @@ function loadPhotos(url) {
         txt += '</div> <!-- photoGallery -->';
         txt += '<div id="photoHolder' + i + '" class="photoHolder">';
         txt += '<div id="photoTitle' + i + '" class="photoTitle">';
-        txt += getStringValues(x[i],'NAME');
+        txt += getNames(x[i]);
         txt += '</div> <!-- photoTitle -->';
         txt += '<div id="photoStory' + i + '" class="photoStory">';
-        txt += getStringValues(x[i],'STORY');
+        txt += getStory(x[i]);
         txt += '</div> <!-- photoStory -->';
         txt += '</div> <!-- photoHolder -->';
         txt += '</div> <!-- photoBox -->';
         num += totalImages(x[i]);
       }
-      document.getElementById('mediaWrapperID').style.width = ((num * 725) - 15) + 'px';
+      document.getElementById('mediaWrapperID').style.width = ((num * 715) + num * 2) + 'px';
       document.getElementById('mediaWrapperID').innerHTML=txt;
     }
   };
@@ -152,11 +133,6 @@ function loadPhotos(url) {
   xmlhttp.send();
 }
 
-/**
- * Creates a gallery for the specific coulpe in feature section.
- * @param  {XML Document Tag} x Contains multiple tags for pictures.
- * @return {String}             HTML Markup to create gallery.
- */
 function getGallery(x) {
   var txt,xx,i;
   txt = '';
@@ -167,37 +143,40 @@ function getGallery(x) {
   return txt;
 }
 
-/**
- * Retrieves name or story from XML file.
- * @param  {XML Document Tag}   x                Specific couple.
- * @param  {TagName}            tagname          TagName identifier.
- * @return {String}                              Value of TagName.
- */
-function getStringValues(x,tagname) {
+function getStory(x) {
   var xx,txt;
-  xx = x.getElementsByTagName(tagname);
-  try {
-    txt = xx[0].firstChild.nodeValue;
-  } catch (er) {
-    txt = tagname + 'unavailable.';
-  }
-  return txt;
+  xx = x.getElementsByTagName('STORY');
+  return xx[0].firstChild.nodeValue;
 }
 
-/**
- * Determines the total number of images in the gallery.
- * @param  {[type]} x [description]
- * @return {int}      [Total number of images.]
- */
+function getNames(x) {
+  var xx,txt;
+  xx = x.getElementsByTagName('NAME');
+  return xx[0].firstChild.nodeValue;
+}
+
 function totalImages(x) {
   var xx;
   xx = x.getElementsByTagName('PICTURE');
   return xx.length;
 }
 
-/**
- * Clears the container to reset scrollbar position.
- */
 function clearMedia() {
   document.getElementById('mediaWrapperID').innerHTML='';
+}
+
+function detectmob() { 
+ if( navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Windows Phone/i)
+ ){
+    return true;
+  }
+ else {
+    return false;
+  }
 }
