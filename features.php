@@ -1,8 +1,7 @@
 <div id="contentContainer" class="contentWrapper">
   <div id="mediaSection" class="mediaSection">
     <div id="featureContainer" class="featureContainer">
-      <span id="featuredText" class="featuredText">Featured</span>
-      <p>If you are having difficulties viewing our videos please visit our <a href="#" onclick="return false">Vimeo Page</a></p>
+      <span id="featuredText" class="featuredText">Pirouette</span>
       <ul>
         <li>
           <div id="featureFilmsLink" class="featureLinks">
