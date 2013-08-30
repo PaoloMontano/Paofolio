@@ -1,4 +1,4 @@
-Paofolio
+Pirouette
 ========
 
 Embedded Vimeo and photo gallery.
